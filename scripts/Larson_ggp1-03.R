@@ -209,7 +209,7 @@ plot(plot11)
 
 plot12 = ggplot( data = weatherData) + 
   geom_point( mapping=aes(x=windSpeed, y=tempDept, size=precip2, color=windDir, shape=season) ) +
-  labs( title="Wind Speed vs Temperature Deviation",
+  labs( title="Wind Speed vs Temperature Deviation \U1F4A9",
         subtitle="Lansing, MI -- 2016",
         x = "Wind Speed (MPH)",
         y = "Temperature Deviation (°C)",
