@@ -1,0 +1,32 @@
+---
+title: "Class 4"
+author: "Doug Larson"
+date: "2/3/2022"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+require("knitr") 
+## setting working directory
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+```{r include=FALSE}
+source(file="scripts/Larson_ggp-app04.R");
+```
+
+### **Plots**
+
+```{r Plots, echo=FALSE, message=FALSE}
+plot(plot1)
+
+plot(plot2)
+```
+
+#### ***Text and Math Operation***
+I'm going to include the maximum value of the maximum recorded daily windspeed which is `r max(weatherData$windPeakSpeed)`. For more information, check my github at <https://github.com/larso147/FW891>.
+
+Just for fun, let's include an equation:
+
+$y = \alpha+\beta\times\ x$

@@ -6,8 +6,6 @@ library(package=ggplot2);
 weatherData = read.csv(file="data/Lansing2016NOAA.csv", 
                        stringsAsFactors = FALSE);
 
-View(weatherData)
-
 plot1 = ggplot( data=weatherData ) +
   geom_point( mapping=aes(x=windSpeed, y=minTemp, alpha = maxTemp), #alpha use 1
               color = rgb(red = 0.6, green = 0.2, blue = 0.9),  #RGB use 1, Plot Point modification 1 (Unique Prop 1)
