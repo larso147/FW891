@@ -14,9 +14,10 @@ seasonOrdered = factor(weatherData$season,
                        levels=c("Spring", "Summer", "Fall", "Winter"));
 
 plot1 = ggplot( data=weatherData ) +
-  geom_point( mapping=aes(x=avgTemp, y=relHum, shape=seasonOrdered, fill = seasonOrdered)) +
+  geom_point( mapping=aes(x=avgTemp, y=relHum, shape=seasonOrdered, fill = seasonOrdered) ) +
   geom_smooth( mapping = aes(x=avgTemp, y=relHum, color = seasonOrdered), 
-              method = "lm", se=F)+
+              method = "lm", 
+              se=FALSE )+
      theme_bw() +
      labs(title = "Humidity (\u0025) vs. Temperature (\u00B0F)",
        subtitle = "Lansing, Michigan: 2016",

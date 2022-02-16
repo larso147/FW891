@@ -24,6 +24,8 @@ weatherData$windDirOrdered = windDirOrdered;
 
 plot1 = ggplot( data=weatherData ) +
   geom_point( mapping=aes(x=avgTemp, y=relHum)) +  
+  geom_smooth( mapping=aes(x=avgTemp, y=relHum),
+               method = "lm") +
   theme_bw() +
   facet_grid( rows = vars(windSpeedOrdered), cols = vars(windDirOrdered) ) +  
   labs(title = "Average Temperature vs Relative Humidity",
