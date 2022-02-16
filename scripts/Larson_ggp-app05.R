@@ -6,8 +6,6 @@ rm(list=ls());
 options(show.error.locations = TRUE);  
 library(package=ggplot2);      
 
-View(weatherData)
-
 weatherData = read.csv(file="data/Lansing2016NOAA.csv", 
                        stringsAsFactors = FALSE);  
 
@@ -16,54 +14,54 @@ seasonOrdered = factor(weatherData$season,
                        levels=c("Spring", "Summer", "Fall", "Winter"));
 
 plot1 = ggplot( data=weatherData ) +
-  geom_point( mapping=aes(x=avgTemp, y=relHum, color=seasonOrdered, size=precip2, shape=season)) +
-  theme_bw() +
-  labs(title = "Humidity (\u0025) vs. Temperature (\u00B0F)",
+  geom_point( mapping=aes(x=avgTemp, y=relHum, shape=seasonOrdered, fill = seasonOrdered)) +
+  geom_smooth( mapping = aes(x=avgTemp, y=relHum, color = seasonOrdered), 
+              method = "lm", se=F)+
+     theme_bw() +
+     labs(title = "Humidity (\u0025) vs. Temperature (\u00B0F)",
        subtitle = "Lansing, Michigan: 2016",
        x = "Temperature (\u00B0F)",  
        y = "Humidity (\u0025)",
+       fill = "Seasons",
        color = "Seasons",
-       size = "Precipitation",
        shape = "Seasons") +    
-  guides(color = guide_legend(order=1),
+     guides(color = guide_legend(order=1),
          size = guide_legend(order=2)) +   
-  scale_x_continuous(limits=c(15,85),
+     scale_x_continuous(limits=c(15,85),
                    breaks = c(30,50,70)) +
-  scale_y_continuous(limits=c(40,100),
+     scale_y_continuous(limits=c(40,100),
                      breaks = c(50,70,90)) +
-  scale_size(range=c(0,5))+
-  theme_bw();
-
+     scale_size(range=c(0,5));
 plot(plot1);
 
 plot2 = plot1 + 
-    scale_shape_manual(values=c(21,22,23,24))+
-    scale_color_manual(values = c("Summer"="red",
-                                  "Spring" = "green",
-                                  "Fall" = "yellow", 
-                                  "Winter" = "blue")); 
+       scale_shape_manual(values=c(21,22,23,24))+
+       scale_fill_manual(values = c("Summer"="red",
+                                    "Spring" = "green",
+                                    "Fall" = "yellow", 
+                                    "Winter" = "blue"))+
+       scale_color_manual(values = c("Summer"="red",
+                                     "Spring" = "green",
+                                     "Fall" = "yellow", 
+                                     "Winter" = "blue")); 
 plot(plot2)
   
-plot3 = plot2 +
-  geom_smooth(mapping = aes(x=avgTemp, y=relHum,color = seasonOrdered), 
-      method = "lm");
-plot(plot3)
 
 #### Part 2 = Histogram ####
 windSpeedOrdered = factor(weatherData$windSpeedLevel,
                           levels=c("Low", "Medium", "High") );
 
 plot4 = ggplot( data=weatherData ) +
-  geom_histogram(mapping = aes(x=relHum, fill = windSpeedOrdered), bins = 30, binwidth = 2) +
+  geom_histogram(mapping = aes(x=relHum, color = windSpeedOrdered), bins = 30, binwidth = 2) +
     labs(title = "Relative Humidity (\U0025)", 
          subtitle = "Lansing, Michigan: 2016",
          x = "Relative Humidity (\U0025)",
          y = "Counts Per Bin",
-         fill = "Wind Speed") +
+         color = "Wind Speed") +
   theme_classic()+
-  scale_fill_manual(values=c("Low" = "green",
-                             "Medium" = "yellow",  
-                             "High" = "red")) 
+  scale_color_manual(values=c("Low" = "green",
+                              "Medium" = "yellow",  
+                              "High" = "red")); 
 plot(plot4)
 
 plot5 = plot4 +
