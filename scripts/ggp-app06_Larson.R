@@ -44,13 +44,13 @@ weatherData$seasonOrdered = seasonOrdered;
 plot2 = ggplot( data=weatherData ) +
   geom_histogram( mapping=aes(x=avgTemp, fill = seasonOrdered),
                   color="black",
-                  bins = 15) + 
-  scale_x_continuous(0,90,breaks = c(5,15,25,35,45,55,65,75,85)) +
-  facet_grid( rows = vars(seasonOrdered) ) +
+                  bins = 15) +
   labs(title = "Temperature (\u00B0F)",
        subtitle = "Lansing, Michigan: 2016",
        x = "Temperature (\u00B0F)",
        fill = "Season")+
+  scale_x_continuous(limits = c(0,90),breaks = c(5,15,25,35,45,55,65,75,85)) +
+  facet_grid( rows = vars(seasonOrdered) ) +
   scale_fill_manual(values=c("Spring" = "green",
                              "Summer" = "red",  
                              "Fall" = "orange", 
@@ -98,8 +98,9 @@ plot(plot3);
 #### Part 4 - Hiding the Outliers. 
 
 # Option 1 (RGB) - Change the RGB so that the outliers are white -  outlier.color = rgb(red=1, green = 1, blue = 1)
-# Option 2 (outlier size) - set outlier sizer to 0. outlier.size = 0
+# Option 2 (outlier size) - set outlier size to 0. outlier.size = 0
 # Option 3 (outlier alpha) - make the outliers completely transparent - outlier.alpha = 0
+# Option 4 - replacement for option 1 - set outlier.shape to NA
 
 #### Questions ####
 
