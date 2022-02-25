@@ -167,6 +167,8 @@ plot(plot4);
 # - facet_grid the same two variable for the same scatterplot
 ###############################################################
 
+##Test Fix
+
 dateFormatted = as.Date(weatherData$dateYr, "%Y-%m-%d");
 monthAbb = format(dateFormatted, "%b");  
 weatherData$month = monthAbb;   
