@@ -2,6 +2,8 @@
 #Date: 2/15/2022
 #Title: Lab 6
 
+#Did this fix? 
+
 rm(list=ls());                     
 options(show.error.locations = TRUE);  
 library(package=ggplot2);              

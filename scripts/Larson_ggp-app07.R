@@ -29,7 +29,18 @@ fillpoints = c("red", "green", "blue");
 xvector = c(2,2,2);
 yvector = c(-22,20,25);
 
-plot2 = plot1 + 
+plot2 = plot1 +
+  annotate(geom="rect",   
+           xmin = c(1.8, 1.8, 1.8),    
+           xmax = c(2.2, 2.2, 2.2),    
+           ymin = c(-24,18,23),    
+           ymax = c(-20,22,27),   
+           linetype=1,
+           color = "black",
+           fill = "black");
+plot(plot2);
+
+plot3 = plot2 + 
     annotate(geom="point",
            x = xvector,
            y = yvector,
@@ -37,18 +48,6 @@ plot2 = plot1 +
            color = "black", 
            fill = fillpoints,
            shape = 21);
-plot(plot2);
-
-plot3 = plot2 +
-  annotate(geom="rect",   
-           xmin = c(1.8, 1.8, 1.8),    
-           xmax = c(2.2, 2.2, 2.2),    
-           ymin = c(-24,18,23),    
-           ymax = c(-20,22,27),   
-           alpha = 0.5,
-           linetype=1,
-           color = "black",
-           fill = "black");
 plot(plot3);  
 
 
@@ -110,32 +109,16 @@ plot(plot8);
 
 #### Part 3 #### 
 
-xvec2 = seq(1,1000, by=1)
-yvec2 = seq(sqrt(1), sqrt(1000), length = 1000)
+xvec2 = seq(1,1000)
+yvec2 = sqrt(xvec2)
 
 plot9 = ggplot() +
            theme_bw() +
-           annotate(geom="point",
+           annotate(geom="line",
               x =xvec2, 
-              y = yvec2,  
-              size = 1,
-              color = "red4",
-              fill = "gold",
-              shape = 24)+
-           labs(title="Mapping the Squart Root of X",
-              x = "Sequence (n = 1:1000)",
-              y = "Square Root of X"); 
-plot(plot9);
-
-plot10 = plot9 + 
-           annotate(geom="segment",
-             x=1, 
-             xend=1000,
-             y=1, 
-             yend=sqrt(1000),
-             color = "gold",
-             linetype=1,
-             size = 1,
-             arrow = arrow());
-plot(plot10)
+              y = yvec2,
+              color = "gold",
+              size=2,
+              arrow = arrow()) 
+plot(plot9)
            
