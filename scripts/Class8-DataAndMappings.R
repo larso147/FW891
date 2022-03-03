@@ -1,4 +1,3 @@
-{
   rm(list=ls());                         # clear Environment tab
   options(show.error.locations = TRUE);  # show line numbers on error
   library(package=ggplot2);              # get the GGPlot package
@@ -20,8 +19,15 @@
     geom_point(mapping=aes(x=avgTemp, y=relHum)) +
     geom_smooth(mapping=aes(x=avgTemp, y=relHum),
                 method = "lm",
-                fill = "red");
+                fill = "red") +
+    geom_curve(mapping = aes(x=36, y=51, xend = 20, yend = 49), 
+               size=1, 
+               color="green",
+               curvature = -1, 
+               arrow = arrow()); 
   plot(plotA1);
+  
+  View(weatherData)
   
   ## Can you switch from global to local data? Yes! ##  
   plotA2 = ggplot(data=weatherData) +  # global data frame

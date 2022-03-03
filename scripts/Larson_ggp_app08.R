@@ -2,6 +2,8 @@
 #Date: 3/1/2022
 #Title: Lab 8
 
+#adding an in class comment to commit / push
+
 rm(list=ls());                     
 options(show.error.locations = TRUE);  
 library(package=ggplot2);  
