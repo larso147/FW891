@@ -47,6 +47,7 @@
   ## SHP file are shapefiles (probably the most popular -- ArcGIS)
   #  They are not standalone files!
   # Get the lake borders from downloaded file
+  ###MUST INCLUDE ALL FILES FROM THE SHAPEFILE###
   lakes = st_read(dsn="data/lakes/ne_10m_lakes.shp");  
   lakes_SF = st_as_sf(lakes); 
   
@@ -55,6 +56,8 @@
   # get the state borders from naturalearth
   states = ne_states(country = "United States of America");
   states_SF = st_as_sf(states);
+  
+  states_SF
   
   #### https://www.naturalearthdata.com/  (can get shapefiles from here)
   #### https://rdrr.io/cran/rnaturalearth/api/ (R interface to naturalearth website)
@@ -79,6 +82,7 @@
             mapping = aes(geometry = geometry),
             color = "blue",
             fill = "blue");
+  plot(plot1)
   
   plot2 = plot1 +
     # 4326 will default to Mercator projection...
