@@ -29,6 +29,7 @@
   museums_SF2 = st_as_sf(museums, 
                          coords = c("lng", "lat"),
                          crs = 4326);  # it's a guess since no crs info was given
+  museums_SF2
   
   #### Group 1:
   #  Using a text editor (RStudio is a text editor):    
@@ -40,6 +41,8 @@
   lakeMichigan = st_read(dsn="data/Lake_Michigan_shoreline.kml");
   # KML files have the lat, long, and crs built in  -- you (usually) do not need to declare it
   lakeMI_SF = st_as_sf(lakeMichigan); 
+  
+  lakeMichigan
   
   ## SHP file are shapefiles (probably the most popular -- ArcGIS)
   #  They are not standalone files!
